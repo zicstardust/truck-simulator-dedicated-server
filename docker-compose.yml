@@ -5,11 +5,10 @@ services:
     build: .
     env_file: .env
     ports:
-      - 16261:16261/udp #Default Port
-      #- 16262:16262/udp #Direct Connection (only build 41 and 42)
-      #- 8766:8766/udp #Steam Port 1 (only builds 40, 39 and 38)
-      #- 8767:8767/udp #Steam Port 2 (only builds 40, 38 and 38)
-      #- 27015:27015 #Rcon
+      - 27015:27015/tcp #Connection Dedicated Port
+      - 27015:27015/udp #Connection Dedicated Port
+      - 27016:27016/tcp #Query Dedicated Port
+      - 27016:27016/udp #Query Dedicated Port
     volumes:
       - ./data:/data
       - ./cache:/cache

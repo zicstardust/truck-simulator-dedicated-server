@@ -20,7 +20,10 @@ RUN chmod +x /entrypoint.sh; \
 	tar zxvf steamcmd_linux.tar.gz -C /opt/steamcmd/; \
 	rm -f steamcmd_linux.tar.gz
 
-EXPOSE 16261/udp
+EXPOSE 27015/tcp
+EXPOSE 27015/udp
+EXPOSE 27016/tcp
+EXPOSE 27016/udp
 
 VOLUME [ "/data" ]
 

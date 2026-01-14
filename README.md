@@ -1,5 +1,5 @@
-# Project Zomboid Dedicated Server 
-Project Zomboid dedicated server container with auto download of workshop mods for non-steam servers
+# Truck Simulador Dedicated Server 
+Euro Truck Simulador 2 and American Truck Simulador dedicated server container.
 
 [GitHub](https://github.com/zicstardust/truck-simulator-dedicated-server)
 
@@ -26,7 +26,10 @@ services:
     environment:
       TZ: America/New_York
     ports:
-      - 16261:16261/udp #Default_Port
+      - 27015:27015/tcp #Connection Dedicated Port
+      - 27015:27015/udp #Connection Dedicated Port
+      - 27016:27016/tcp #Query Dedicated Port
+      - 27016:27016/udp #Query Dedicated Port
     volumes:
       - <path to data>:/data
       - <path to cache>:/cache #Opcional: Download cache
@@ -40,7 +43,7 @@ services:
 | `PUID` | Set UID | 1000 | |
 | `PGID` | Set GID | 1000 | |
 | `GAME` | Set game server | euro2 | [Look at the set game section](#set-game) |
-| `BUILD` | Set build server version | latest | [Look at the set build section](#set-build) |
+| `VERSION` | Set server version | latest | [Look at the set version section](#set-version) |
 | `DISABLE_CACHE` | Disable download cache | false | |
 
 ## Set GAME
@@ -49,7 +52,7 @@ services:
 | `euro2` | Euro Truck Simulator 2 |
 | `american` | American Truck Simulator |
 
-## Set BUILD
+## Set VERSION
 
 | Value | Description | Server version |
 | :----: | --- | --- |
@@ -67,3 +70,33 @@ services:
 | `1.48` | Server 1.48 | 1.48.x |
 | `1.47` | Server 1.47 | 1.47.x |
 | `1.46` | Server 1.46, only American Truck Simulator | 1.46.x |
+
+
+## Required files to run dedicated server
+
+"server_packages.sii" - contains map details, dlc and mods configuration
+
+"server_packages.dat" - contains internal map data
+
+### How to export server_packages
+- Install Euro 2/American Truck Simulador game.
+- Run game once and close.
+- Edit config.cfg [found in game home directory](https://modding.scssoft.com/wiki/Documentation/Engine/Game_user_path).
+- Enable game console.
+``` conf
+uset g_developer "1"
+uset g_minicon "1"
+uset g_console_state "1"
+uset g_console "1"
+```
+- Run game.
+- Load save game
+- When game is running press `~` or `'` to open game console.
+- run `export_server_packages` 
+- This will **generate server_packages.sii** and **server_packages.dat**. These files carry dlc and mod configuration based on your current game setup. 
+- manually copy **server_packages.sii** and **server_packages.dat** to container volume `/data/`.
+
+These files are NOT linked to your account in any way. 
+
+[More infos](https://modding.scssoft.com/wiki/Documentation/Tools/Dedicated_Server#How_to_launch_a_dedicated_server_on_Linux_without_Steam_client_installed)
+

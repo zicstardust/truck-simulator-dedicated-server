@@ -1,8 +1,9 @@
 #!/usr/bin/env bash
 
 option=$1
-BUILD=$2
-APP_CACHE=$3
+VERSION=$2
+GAME=$3
+APP_CACHE=$4
 
 
 cache_dir="/cache"
@@ -35,21 +36,21 @@ restore_steamcmd(){
 
 backup_app(){
     if [[ "$APP_CACHE" =~ ^(1|true|True|y|Y)$ ]]; then
-        echo "Caching server build ${BUILD}..."
-        if [ -e "${cache_dir}/app_${BUILD}.tar.gz" ]; then
-            rm -f "${cache_dir}/app_${BUILD}.tar.gz"
+        echo "Caching ${GAME} server version ${VERSION}..."
+        if [ -e "${cache_dir}/app_${GAME}_${VERSION}.tar.gz" ]; then
+            rm -f "${cache_dir}/app_${GAME}_${VERSION}.tar.gz"
         fi
 
-        tar -C /app -czf ${cache_dir}/app_${BUILD}.tar.gz .
-        chmod 440 ${cache_dir}/app_${BUILD}.tar.gz
+        tar -C /app -czf ${cache_dir}/app_${GAME}_${VERSION}.tar.gz .
+        chmod 440 ${cache_dir}/app_${GAME}_${VERSION}.tar.gz
     fi
 }
 
 
 restore_app(){
-    if [ -e "${cache_dir}/app_${BUILD}.tar.gz" ]; then
-        echo "Restore cache server build ${BUILD}..."
-        tar -xzf ${cache_dir}/app_${BUILD}.tar.gz -C /app/
+    if [ -e "${cache_dir}/app_${GAME}_${VERSION}.tar.gz" ]; then
+        echo "Restore cache ${GAME} server version ${VERSION}..."
+        tar -xzf ${cache_dir}/app_${GAME}_${VERSION}.tar.gz -C /app/
     fi
 }
 

@@ -2,7 +2,7 @@
 
 set -e
 : "${GAME:=euro2}"
-: "${BUILD:=latest}"
+: "${VERSION:=latest}"
 : "${APP_CACHE:=true}"
 : "${DISABLE_CACHE:=false}"
 
@@ -18,55 +18,55 @@ else
     exit 1
 fi
 
-if [ "$BUILD" == "latest" ]; then
-    BUILD="1.57"
+if [ "$VERSION" == "latest" ]; then
+    VERSION="1.57"
 fi
 
 
-if [ "$BUILD" == "beta" ]; then
+if [ "$VERSION" == "beta" ]; then
     BRANCHE="public_beta"
     APP_CACHE="false"
-elif [ "$BUILD" == "1.57" ]; then
+elif [ "$VERSION" == "1.57" ]; then
     BRANCHE="public"
-elif [ "$BUILD" == "1.56" ]; then
+elif [ "$VERSION" == "1.56" ]; then
     BRANCHE="temporary_1_56"
-elif [ "$BUILD" == "1.55" ]; then
+elif [ "$VERSION" == "1.55" ]; then
     BRANCHE="temporary_1_55"
-elif [ "$BUILD" == "1.54" ]; then
+elif [ "$VERSION" == "1.54" ]; then
     BRANCHE="temporary_1_54"
-elif [ "$BUILD" == "1.53" ]; then
+elif [ "$VERSION" == "1.53" ]; then
     BRANCHE="temporary_1_53"
-elif [ "$BUILD" == "1.52" ]; then
+elif [ "$VERSION" == "1.52" ]; then
     BRANCHE="temporary_1_52"
-elif [ "$BUILD" == "1.51" ]; then
+elif [ "$VERSION" == "1.51" ]; then
     BRANCHE="temporary_1_51"
-elif [ "$BUILD" == "1.50" ]; then
+elif [ "$VERSION" == "1.50" ]; then
     BRANCHE="temporary_1_50"
-elif [ "$BUILD" == "1.49" ]; then
+elif [ "$VERSION" == "1.49" ]; then
     BRANCHE="temporary_1_49"
-elif [ "$BUILD" == "1.48.5" ]; then
+elif [ "$VERSION" == "1.48.5" ]; then
     BRANCHE="temporary_1_48_5"
-elif [ "$BUILD" == "1.48" ]; then
+elif [ "$VERSION" == "1.48" ]; then
     BRANCHE="temporary_1_48"
-elif [ "$BUILD" == "1.47" ]; then
+elif [ "$VERSION" == "1.47" ]; then
     BRANCHE="temporary_1_47"
-elif [ "$BUILD" == "1.46" ] && [ "$GAME" == "american" ]; then
+elif [ "$VERSION" == "1.46" ] && [ "$GAME" == "american" ]; then
     BRANCHE="temporary_1_46"
 else
-    echo "BUILD ${BUILD} not supported"
+    echo "VERSION ${VERSION} not supported"
     exit 1
 fi
 
-echo "Downloading ${GAME_NAME} server BUILD ${BUILD}..."
+echo "Downloading ${GAME_NAME} server VERSION ${VERSION}..."
 
 if [[ "$DISABLE_CACHE" =~ ^(0|false|False|n|N)$ ]]; then
     cache.sh restore_steamcmd
-    cache.sh restore_app $BUILD
+    cache.sh restore_app $VERSION $GAME
 fi
 
 steamcmd.sh +force_install_dir /app +login anonymous +app_update ${GAME_ID} validate -beta ${BRANCHE} +quit
 
 if [[ "$DISABLE_CACHE" =~ ^(0|false|False|n|N)$ ]]; then
     cache.sh backup_steamcmd
-    cache.sh backup_app $BUILD $APP_CACHE
+    cache.sh backup_app $VERSION $GAME $APP_CACHE
 fi
