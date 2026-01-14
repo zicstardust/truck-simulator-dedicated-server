@@ -61,12 +61,12 @@ echo "Downloading ${GAME_NAME} server VERSION ${VERSION}..."
 
 if [[ "$DISABLE_CACHE" =~ ^(0|false|False|n|N)$ ]]; then
     cache.sh restore_steamcmd
-    cache.sh restore_app $VERSION $GAME
+    cache.sh restore_app $VERSION $GAME_NAME $GAME
 fi
 
 steamcmd.sh +force_install_dir /app +login anonymous +app_update ${GAME_ID} validate -beta ${BRANCHE} +quit
 
 if [[ "$DISABLE_CACHE" =~ ^(0|false|False|n|N)$ ]]; then
     cache.sh backup_steamcmd
-    cache.sh backup_app $VERSION $GAME $APP_CACHE
+    cache.sh backup_app $VERSION $GAME $GAME_NAME $APP_CACHE
 fi

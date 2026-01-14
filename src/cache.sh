@@ -3,7 +3,8 @@
 option=$1
 VERSION=$2
 GAME=$3
-APP_CACHE=$4
+GAME_NAME=$4
+APP_CACHE=$5
 
 
 cache_dir="/cache"
@@ -36,7 +37,7 @@ restore_steamcmd(){
 
 backup_app(){
     if [[ "$APP_CACHE" =~ ^(1|true|True|y|Y)$ ]]; then
-        echo "Caching ${GAME} server version ${VERSION}..."
+        echo "Caching ${GAME_NAME} server version ${VERSION}..."
         if [ -e "${cache_dir}/app_${GAME}_${VERSION}.tar.gz" ]; then
             rm -f "${cache_dir}/app_${GAME}_${VERSION}.tar.gz"
         fi
@@ -49,7 +50,7 @@ backup_app(){
 
 restore_app(){
     if [ -e "${cache_dir}/app_${GAME}_${VERSION}.tar.gz" ]; then
-        echo "Restore cache ${GAME} server version ${VERSION}..."
+        echo "Restore cache ${GAME_NAME} server version ${VERSION}..."
         tar -xzf ${cache_dir}/app_${GAME}_${VERSION}.tar.gz -C /app/
     fi
 }
