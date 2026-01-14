@@ -15,9 +15,6 @@ fi
 
 mkdir -p /data /home/trucksimulator/.local/share /cache
 
-ln -s /data "/home/trucksimulator/.local/share/Euro Truck Simulator 2"
-ln -s /data "/home/trucksimulator/.local/share/American Truck Simulator"
-
 chown -R trucksimulator:trucksimulator /app /data /home/trucksimulator /opt/steamcmd /cache
 
 exec gosu trucksimulator "$@"
