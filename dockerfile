@@ -9,12 +9,21 @@ COPY src/* /usr/local/bin/
 
 RUN chmod +x /entrypoint.sh; \
 	chmod +x /usr/local/bin/*; \
-	apt-get update && apt-get -y install ca-certificates gosu wget lib32gcc-s1; \
-	apt-get install -y libx11-6 libatomic1; \
+	\
+	apt-get update; \
+	apt-get -y upgrade; \
+	apt-get -y --no-install-recommends install \
+		ca-certificates \
+		gosu \
+		wget \
+		lib32gcc-s1 \
+		libx11-6 \
+		libatomic1; \
 	apt-get -y autoremove; \
 	apt-get -y autoclean; \
 	apt-get -y clean; \
 	rm -Rf /var/lib/apt/lists/*; \
+	\
 	wget "https://steamcdn-a.akamaihd.net/client/installer/steamcmd_linux.tar.gz"; \
 	mkdir -p /opt/steamcmd; \
 	tar zxvf steamcmd_linux.tar.gz -C /opt/steamcmd/; \
