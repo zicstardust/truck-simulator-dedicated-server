@@ -56,8 +56,11 @@ services:
 
 | Value | Description | Server version |
 | :----: | --- | --- |
-| `beta` | Last beta version | 1.57  |
-| `1.57`, `latest` | Last stable version | 1.57 |
+| `beta` | Last beta version | |
+| `latest` | Last stable version | |
+| `1.59` | Server 1.57 | 1.56.x |
+| `1.58` | Server 1.57 | 1.56.x |
+| `1.57` | Server 1.57 | 1.56.x |
 | `1.56` | Server 1.56 | 1.56.x |
 | `1.55` | Server 1.55 | 1.55.x |
 | `1.54` | Server 1.54 | 1.54.x |

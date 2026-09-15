@@ -19,15 +19,16 @@ else
 fi
 
 if [ "$VERSION" == "latest" ]; then
-    VERSION="1.57"
-fi
-
-
-if [ "$VERSION" == "beta" ]; then
+    VERSION="public"
+elif [ "$VERSION" == "beta" ]; then
     BRANCHE="public_beta"
     APP_CACHE="false"
+elif [ "$VERSION" == "1.59" ]; then
+    BRANCHE="temporary_1_59"
+elif [ "$VERSION" == "1.58" ]; then
+    BRANCHE="temporary_1_58"
 elif [ "$VERSION" == "1.57" ]; then
-    BRANCHE="public"
+    BRANCHE="temporary_1_57"
 elif [ "$VERSION" == "1.56" ]; then
     BRANCHE="temporary_1_56"
 elif [ "$VERSION" == "1.55" ]; then
