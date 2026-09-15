@@ -54,25 +54,25 @@ services:
 
 ## Set VERSION
 
-| Value | Description | Server version |
-| :----: | --- | --- |
-| `beta` | Last beta version | |
-| `latest` | Last stable version | |
-| `1.59` | Server 1.57 | 1.56.x |
-| `1.58` | Server 1.57 | 1.56.x |
-| `1.57` | Server 1.57 | 1.56.x |
-| `1.56` | Server 1.56 | 1.56.x |
-| `1.55` | Server 1.55 | 1.55.x |
-| `1.54` | Server 1.54 | 1.54.x |
-| `1.53` | Server 1.53 | 1.53.x |
-| `1.52` | Server 1.52 | 1.52.x |
-| `1.51` | Server 1.51 | 1.51.x |
-| `1.50` | Server 1.50 | 1.50.x |
-| `1.49` | Server 1.49 | 1.49.x |
-| `1.48.5` | Server 1.48.5 | 1.48.5 |
-| `1.48` | Server 1.48 | 1.48.x |
-| `1.47` | Server 1.47 | 1.47.x |
-| `1.46` | Server 1.46, only American Truck Simulator | 1.46.x |
+| Value | Description |
+| :----: | --- |
+| `beta` | Last beta version |
+| `latest` | Last stable version |
+| `1.59` | Server 1.59 |
+| `1.58` | Server 1.58 |
+| `1.57` | Server 1.57 |
+| `1.56` | Server 1.56 |
+| `1.55` | Server 1.55 |
+| `1.54` | Server 1.54 |
+| `1.53` | Server 1.53 |
+| `1.52` | Server 1.52 |
+| `1.51` | Server 1.51 |
+| `1.50` | Server 1.50 |
+| `1.49` | Server 1.49 |
+| `1.48.5` | Server 1.48.5 |
+| `1.48` | Server 1.48 |
+| `1.47` | Server 1.47 |
+| `1.46` | Server 1.46, only American Truck Simulator |
 
 
 ## Required files to run dedicated server
