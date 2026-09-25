@@ -2,7 +2,9 @@ services:
   app:
     container_name: truck-simulator-dedicated-server
     image: truck-simulator-dedicated-server:latest
-    build: .
+    build:
+      context: .
+      dockerfile: Dockerfile
     env_file: .env
     ports:
       - 27015:27015/tcp #Connection Dedicated Port

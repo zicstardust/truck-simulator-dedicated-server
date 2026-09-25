@@ -4,10 +4,9 @@ on:
   push:
     branches: [ "main" ]
     paths:
-      - 'dockerfile'
+      - 'Dockerfile'
       - 'entrypoint.sh'
       - 'src/**'
-      - '.github/workflows/push-image-gh-io.yml'
 env:
   PLATAFORM_ARCH: linux/amd64
   BUILDX_NO_DEFAULT_ATTESTATIONS: 1
@@ -41,7 +40,7 @@ jobs:
         uses: docker/build-push-action@v7
         with:
           context: .
-          file: dockerfile
+          file: Dockerfile
           platforms: ${{ env.PLATAFORM_ARCH }}
           push: true
           #proveance: false

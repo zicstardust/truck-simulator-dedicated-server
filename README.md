@@ -8,7 +8,7 @@ Euro Truck Simulador 2 and American Truck Simulador dedicated server container.
 
 | Tag | Architecture | Description |
 | :----: | :----: | :----: |
-| [`latest`](https://github.com/zicstardust/truck-simulator-dedicated-server/blob/main/dockerfile) | amd64 | Dedicated Server |
+| [`latest`](https://github.com/zicstardust/truck-simulator-dedicated-server/blob/main/Dockerfile) | amd64 | Dedicated Server |
 
 ### Registries
 | Registry | Full image name | Description |
