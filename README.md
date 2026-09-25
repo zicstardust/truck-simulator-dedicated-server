@@ -58,6 +58,8 @@ services:
 | :----: | --- |
 | `beta` | Last beta version |
 | `latest` | Last stable version |
+| `1.61` | Server 1.61 |
+| `1.60` | Server 1.60 |
 | `1.59` | Server 1.59 |
 | `1.58` | Server 1.58 |
 | `1.57` | Server 1.57 |

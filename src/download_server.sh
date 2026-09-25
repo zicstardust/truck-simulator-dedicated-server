@@ -23,6 +23,10 @@ if [ "$VERSION" == "latest" ]; then
 elif [ "$VERSION" == "beta" ]; then
     BRANCHE="public_beta"
     APP_CACHE="false"
+elif [ "$VERSION" == "1.61" ]; then
+    BRANCHE="temporary_1_61"
+elif [ "$VERSION" == "1.60" ]; then
+    BRANCHE="temporary_1_60"
 elif [ "$VERSION" == "1.59" ]; then
     BRANCHE="temporary_1_59"
 elif [ "$VERSION" == "1.58" ]; then
