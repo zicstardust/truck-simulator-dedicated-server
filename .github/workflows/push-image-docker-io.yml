@@ -7,6 +7,9 @@ on:
       - 'Dockerfile'
       - 'entrypoint.sh'
       - 'src/**'
+  schedule:
+    - cron: '0 0 * * 5'
+  workflow_dispatch:
 
 env:
   PLATAFORM_ARCH: linux/amd64
