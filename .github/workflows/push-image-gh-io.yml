@@ -10,9 +10,6 @@ on:
   schedule:
     - cron: '0 0 * * 5'
   workflow_dispatch:
-
-permissions:
-  contents: write
   
 env:
   PLATAFORM_ARCH: linux/amd64
@@ -22,6 +19,9 @@ jobs:
   build:
     
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
 
     steps:
       - name: Checkout
